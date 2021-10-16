@@ -1,9 +1,10 @@
 import { files } from "./files.js";
 
 const fileResponse = async (path) => {
-  try {
 
-    const fileInfo = files[path];
+  const fileInfo = files[path];
+
+  try {
     if (!fileInfo) {
       console.error({
         error: 'File not in files list',
