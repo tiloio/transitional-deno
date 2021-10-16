@@ -1,6 +1,4 @@
-import { lookup } from "https://deno.land/x/media_types/mod.ts";
-import { files } from "./files";
-
+import { files } from "./files.js";
 
 const fileResponse = async (path) => {
   try {
