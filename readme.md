@@ -3,6 +3,7 @@
 - [ ] svelte compile whole project
 - [ ] parcel bundle multiple js
 - [ ] parcel bundle everything
+- [ ] Create json list of files with all request information before deployment (performance)
 
 
 ## Parcel blocker

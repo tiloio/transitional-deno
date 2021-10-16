@@ -7,9 +7,8 @@ const fileResponse = async (path) => {
   const alreadyReturnedFile = files[path];
   if (alreadyReturnedFile) {
     console.info({
-      text: 'Serving cached response',
+      text: 'Servingss cached response',
       path,
-      encoedPath,
       cachedTime: alreadyReturnedFile.time
     });
     return alreadyReturnedFile.response;
@@ -27,7 +26,7 @@ const fileResponse = async (path) => {
 
     files[path] = { response, time: Date.now() };
     console.info({
-      text: 'Serving none cached response',
+      text: 'Servingss none cached response',
       path,
       encodedPath
     });
