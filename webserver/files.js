@@ -1,10 +1,16 @@
 export const files = {
     "": {
-        "content-type": "text/html",
-        "time": 0
+        headers: {
+            "content-type": "text/html",
+        },
+        "time": 0,
+        path: './webserver/.html'
     },
     "/index.html": {
-        "content-type": "text/html",
-        "time": 0
+        headers: {
+            "content-type": "text/html",
+        },
+        "time": 0,
+        path: './webserver/.html'
     }
 }

@@ -1,45 +1,36 @@
 import { lookup } from "https://deno.land/x/media_types/mod.ts";
+import { files } from "./files";
 
-const files = {};
 
 const fileResponse = async (path) => {
-
-  const alreadyReturnedFile = files[path];
-  if (alreadyReturnedFile) {
-    console.info({
-      text: 'Servingss cached response',
-      path,
-      cachedTime: alreadyReturnedFile.time
-    });
-    return alreadyReturnedFile.response;
-  }
-
-  const encodedPath = (path === '/') ? `./webserver/index.html` : `./webserver${path}`;
-
   try {
-    const file = await Deno.readFile(encodedPath);
+
+    const fileInfo = files[path];
+    if (!fileInfo) {
+      console.error({
+        error: 'File not in files list',
+        path
+      });
+      return new Response('Not found', {
+        status: 404
+      });
+    }
+
+    const file = await Deno.readFile(fileInfo.path);
     const response = new Response(file, {
-      headers: {
-        "content-type": lookup(encodedPath)
-      },
+      headers: fileInfo.headers,
     });
 
-    files[path] = { response, time: Date.now() };
-    console.info({
-      text: 'Servingss none cached response',
-      path,
-      encodedPath
-    });
     return response;
 
   } catch (error) {
     console.error({
       path,
-      encodedPath,
+      fileInfo,
       error
     });
 
-    return new Response('does not exist', {
+    return new Response('Not found', {
       status: 404
     });
   }
