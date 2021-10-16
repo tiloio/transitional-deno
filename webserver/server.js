@@ -7,7 +7,7 @@ const fileResponse = async (path) => {
   const alreadyReturnedFile = files[path];
   if (alreadyReturnedFile) return alreadyReturnedFile;
 
-  const encodedPath = (path === '/') ? `./index.html` : `.${path}`;
+  const encodedPath = (path === '/') ? `./webserver/index.html` : `./webserver${path}`;
 
   try {
     const file = await Deno.readFile(encodedPath);
