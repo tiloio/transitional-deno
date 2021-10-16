@@ -29,7 +29,7 @@ const fileResponse = async (path) => {
     console.info({
       text: 'Serving none cached response',
       path,
-      encoedPath
+      encodedPath
     });
     return response;
 
