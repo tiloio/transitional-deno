@@ -22,7 +22,11 @@ const fileResponse = async (path) => {
     return response;
 
   } catch (error) {
-    console.error(error);
+    console.error({
+      path,
+      encodedPath,
+      error
+    });
 
     return new Response('does not exist', {
       status: 404
