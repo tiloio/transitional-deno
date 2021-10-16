@@ -1,9 +1,8 @@
 
 - [ ] svelte compile single file
-- [ ] esbuild minify
 - [ ] svelte compile whole project
-- [ ] esbuild bundle multiple js
-- [ ] esbuild bundle everything
+- [ ] parcel bundle multiple js
+- [ ] parcel bundle everything
 
 
 ## Parcel blocker
