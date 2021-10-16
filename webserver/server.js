@@ -1,5 +1,4 @@
 import { lookup } from "https://deno.land/x/media_types/mod.ts";
-import { join } from "https://deno.land/std@0.105.0/path/mod.ts";
 
 const files = {};
 
@@ -8,7 +7,7 @@ const fileResponse = async (path) => {
   const alreadyReturnedFile = files[path];
   if (alreadyReturnedFile) return alreadyReturnedFile;
 
-  const encodedPath = (path === '/') ? join('.', 'index.html') : join('.', path);
+  const encodedPath = (path === '/') ? `./index.html` : `./${path}`;
 
   try {
     const file = await Deno.readFile(encodedPath);
