@@ -1,5 +1,4 @@
 import { lookup } from "https://deno.land/x/media_types/mod.ts";
-import * as test from "./index.html";
 
 const files = {};
 
