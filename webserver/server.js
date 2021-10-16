@@ -5,7 +5,15 @@ const files = {};
 const fileResponse = async (path) => {
 
   const alreadyReturnedFile = files[path];
-  if (alreadyReturnedFile) return alreadyReturnedFile;
+  if (alreadyReturnedFile) {
+    console.info({
+      text: 'Serving cached response',
+      path,
+      encoedPath,
+      cachedTime: alreadyReturnedFile.time
+    });
+    return alreadyReturnedFile.response;
+  }
 
   const encodedPath = (path === '/') ? `./webserver/index.html` : `./webserver${path}`;
 
@@ -17,7 +25,12 @@ const fileResponse = async (path) => {
       },
     });
 
-    files[path] = response;
+    files[path] = { response, time: Date.now() };
+    console.info({
+      text: 'Serving none cached response',
+      path,
+      encoedPath
+    });
     return response;
 
   } catch (error) {
